@@ -1,0 +1,7 @@
+kubectl get pods
+
+kubectl exec -it spark-master-0 bash
+
+cd /home/ax009089/private/DSC102-PA2-FA23/src
+
+spark-submit --py-files utilities.py,assignment2.py \--files log4j-spark.properties --deploy-mode client --driver-java-options "-Dlog4j.configuration=file:log4j-spark.properties" --master spark://spark-master-svc:7077 --conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=file:log4j-spark.properties" pa2_main.py --pid U09809880 --user ax009089
